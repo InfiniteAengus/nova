@@ -19,7 +19,16 @@ class PsichicWrapper:
         
         with open(os.path.join(self.runtime_config.MODEL_PATH, 'config.json'), 'r') as f:
             self.model_config = json.load(f)
-            
+
+        self.protein_seq = []
+        self.smiles_list = []
+        self.screen_loader = None
+        self.screen_df = None
+        self.model = None
+        self.protein_dict = {}
+        self.smiles_dict = {}
+        
+        
     def load_model(self):
         degree_dict = torch.load(os.path.join(self.runtime_config.MODEL_PATH,
                                               'degree.pt'), 
